@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отладка - Platforma</title>
+    <link rel="stylesheet" href="styles.min.css">
+    <link rel="stylesheet" href="mobile.overrides.css">
+    <link rel="stylesheet" href="card-titles.css">
+</head>
+<body>
+    <div class="brand">platforma.sluchay</div>
+    <nav class="topnav">
+        <button class="tab active" data-tab="home">главная</button>
+        <button class="tab" data-tab="nessffo">nessffo collection</button>
+    </nav>
+
+    <img class="hero" alt="" decoding="async" fetchpriority="high">
+
+    <div class="filters" id="filters">
+        <button class="fbtn active" data-filter="all">все</button>
+        <button class="fbtn" data-filter="stock">в наличии</button>
+        <button class="fbtn" data-filter="preorder">под заказ</button>
+    </div>
+
+    <main class="catalog" id="catalog"></main>
+
+    <div id="debug-info" style="position: fixed; top: 10px; right: 10px; background: rgba(0,0,0,0.8); color: white; padding: 10px; border-radius: 5px; font-family: monospace; font-size: 12px; max-width: 300px; z-index: 9999;">
+        <div id="debug-content">Загрузка...</div>
+    </div>
+
+    <script>
+        // Отладочная информация
+        const debugDiv = document.getElementById('debug-content');
+        
+        function log(message) {
+            console.log(message);
+            debugDiv.innerHTML += message + '<br>';
+        }
+        
+        log('🚀 Отладочная страница загружена');
+        log('Время: ' + new Date().toLocaleString());
+        
+        // Проверяем загрузку товаров
+        fetch('products.json')
+            .then(response => {
+                log('📡 Ответ от products.json: ' + response.status);
+                return response.json();
+            })
+            .then(data => {
+                log('✅ Загружено товаров: ' + data.length);
+                
+                // Группируем по секциям
+                const sections = {};
+                data.forEach(item => {
+                    const section = item.section || 'home';
+                    sections[section] = (sections[section] || 0) + 1;
+                });
+                
+                log('📊 По секциям: ' + JSON.stringify(sections));
+                
+                // Показываем первые 3 товара
+                data.slice(0, 3).forEach((item, index) => {
+                    log(`📦 ${index + 1}. ${item.title} (${item.section})`);
+                });
+                
+                return data;
+            })
+            .catch(error => {
+                log('❌ Ошибка загрузки: ' + error.message);
+            });
+        
+        // Проверяем загрузку JavaScript
+        log('🔍 Проверяем загрузку app.min.js...');
+        
+        // Имитируем загрузку товаров как в основном файле
+        setTimeout(() => {
+            log('⏰ Имитация загрузки товаров...');
+            
+            // Создаем простые карточки для теста
+            const catalog = document.getElementById('catalog');
+            if (catalog) {
+                catalog.innerHTML = '<div style="padding: 20px; text-align: center; color: #666;">Тестовые карточки загружены</div>';
+                log('✅ Тестовые карточки добавлены');
+            } else {
+                log('❌ Элемент catalog не найден');
+            }
+        }, 2000);
+    </script>
+</body>
+</html>

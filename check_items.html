@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверка массива items</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .debug { background: #f0f0f0; padding: 15px; margin: 10px; border-radius: 5px; }
+        .item { border: 1px solid #ccc; margin: 5px; padding: 10px; background: white; }
+    </style>
+</head>
+<body>
+    <h1>Проверка массива items</h1>
+    
+    <div class="debug" id="debug">
+        <strong>Отладочная информация:</strong><br>
+        <span id="status">Загрузка...</span>
+    </div>
+    
+    <div id="items-list"></div>
+
+    <script src="app.min.js"></script>
+    <script>
+        const debug = document.getElementById('debug');
+        const status = document.getElementById('status');
+        const itemsList = document.getElementById('items-list');
+        
+        function log(message) {
+            console.log(message);
+            status.innerHTML += message + '<br>';
+        }
+        
+        log('🚀 Скрипт запущен');
+        
+        // Проверяем массив items
+        if (typeof items !== 'undefined') {
+            log('✅ Массив items найден');
+            log('📊 Количество товаров: ' + items.length);
+            
+            // Проверяем структуру
+            if (Array.isArray(items)) {
+                log('✅ items является массивом');
+            } else {
+                log('❌ items НЕ является массивом');
+                log('Тип items: ' + typeof items);
+            }
+            
+            // Показываем первые 3 товара
+            items.slice(0, 3).forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'item';
+                div.innerHTML = `
+                    <strong>Товар ${index + 1}:</strong><br>
+                    Название: ${item.title}<br>
+                    Цена: ${item.price}<br>
+                    Секция: ${item.section}<br>
+                    Статус: ${item.status}<br>
+                    Изображений: ${item.images ? item.images.length : 0}
+                `;
+                itemsList.appendChild(div);
+                
+                log(`📦 ${index + 1}. ${item.title} (${item.section})`);
+            });
+            
+            // Группируем по секциям
+            const sections = {};
+            items.forEach(item => {
+                const section = item.section || 'home';
+                sections[section] = (sections[section] || 0) + 1;
+            });
+            
+            log('📊 По секциям: ' + JSON.stringify(sections));
+            
+        } else {
+            log('❌ Массив items не найден');
+            log('Доступные глобальные переменные: ' + Object.keys(window).filter(k => k.startsWith('item')).join(', '));
+        }
+    </script>
+</body>
+</html>
