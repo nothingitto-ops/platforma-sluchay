@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test JS</title>
+</head>
+<body>
+    <h1>Test JavaScript</h1>
+    <div id="result"></div>
+    
+    <script>
+        try {
+            document.getElementById('result').innerHTML = '<p>JavaScript работает!</p>';
+            console.log('JavaScript выполняется');
+        } catch (e) {
+            document.getElementById('result').innerHTML = '<p>Ошибка: ' + e.message + '</p>';
+            console.error('Ошибка JavaScript:', e);
+        }
+    </script>
+</body>
+</html>

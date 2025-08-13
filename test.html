@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test JavaScript</title>
+</head>
+<body>
+    <h1>Test JavaScript</h1>
+    <div id="test"></div>
+    
+    <script>
+        // Простой тест
+        document.getElementById('test').innerHTML = '<p>JavaScript работает!</p>';
+        
+        // Тестируем данные из app.min.js
+        const items = [
+            {
+                "images": ["product_2/product_2_1.jpg"],
+                "title": "Пояс-юбка",
+                "price": "3000 р.",
+                "desc": "Пояс, который имеет функцию мешка",
+                "meta": "Состав: 50% хлопок 50% лён",
+                "link": "https://t.me/stub123",
+                "status": "stock",
+                "order": 2,
+                "section": "home"
+            }
+        ];
+        
+        const currentTab = 'home';
+        const activeFilter = 'all';
+        
+        const arr = items.filter(item => item.section === 'home');
+        const src = arr.filter(it => !it.placeholder && (activeFilter==='all' ? true : (it.status||'stock')===activeFilter));
+        
+        document.getElementById('test').innerHTML += `
+            <h2>Тест фильтрации:</h2>
+            <p>Всего товаров: ${items.length}</p>
+            <p>Товары с section='home': ${arr.length}</p>
+            <p>Отфильтрованные товары: ${src.length}</p>
+            <p>currentTab: ${currentTab}</p>
+            <p>activeFilter: ${activeFilter}</p>
+        `;
+    </script>
+</body>
+</html>

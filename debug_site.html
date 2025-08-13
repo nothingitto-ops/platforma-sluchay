@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отладка сайта</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .debug-info { background: #f0f0f0; padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .error { background: #ffebee; color: #c62828; }
+        .success { background: #e8f5e8; color: #2e7d32; }
+        .catalog { border: 2px solid #ccc; padding: 20px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1>Отладка сайта platforma.sluchay</h1>
+    
+    <div id="debug-info" class="debug-info">
+        <h3>Информация об отладке:</h3>
+        <div id="debug-content"></div>
+    </div>
+
+    <div class="catalog" id="catalog">
+        <h2>Каталог товаров:</h2>
+        <div id="catalog-content"></div>
+    </div>
+
+    <script>
+        const debugContent = document.getElementById('debug-content');
+        const catalogContent = document.getElementById('catalog-content');
+        
+        // Функция для добавления отладочной информации
+        function addDebugInfo(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `debug-info ${type}`;
+            div.textContent = message;
+            debugContent.appendChild(div);
+        }
+        
+        // Проверяем загрузку данных
+        addDebugInfo('Начинаем отладку...');
+        
+        // Проверяем, загружен ли app.min.js
+        if (typeof items !== 'undefined') {
+            addDebugInfo(`✅ Данные загружены! Найдено товаров: ${items.length}`, 'success');
+            
+            // Показываем товары
+            items.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.style.border = '1px solid #ddd';
+                itemDiv.style.padding = '10px';
+                itemDiv.style.margin = '10px 0';
+                itemDiv.innerHTML = `
+                    <h3>${index + 1}. ${item.title}</h3>
+                    <p><strong>Цена:</strong> ${item.price}</p>
+                    <p><strong>Статус:</strong> ${item.status}</p>
+                    <p><strong>Изображения:</strong> ${item.images.length} шт.</p>
+                    <p><strong>Описание:</strong> ${item.desc}</p>
+                    ${item.images.length > 0 ? `
+                        <div>
+                            <strong>Первое изображение:</strong><br>
+                            <img src="img/${item.images[0]}" style="max-width: 100px; height: auto;" 
+                                 onerror="this.style.display='none'; this.nextSibling.style.display='block';" 
+                                 onload="this.nextSibling.style.display='none';">
+                            <span style="color: red; display: none;">❌ Изображение не загружено</span>
+                        </div>
+                    ` : '<p style="color: orange;">⚠️ Нет изображений</p>'}
+                `;
+                catalogContent.appendChild(itemDiv);
+            });
+        } else {
+            addDebugInfo('❌ Переменная items не найдена!', 'error');
+            addDebugInfo('Проверьте, что файл app.min.js загружается корректно.', 'error');
+        }
+        
+        // Проверяем другие переменные
+        if (typeof DEFAULT_TG !== 'undefined') {
+            addDebugInfo(`✅ DEFAULT_TG: ${DEFAULT_TG}`, 'success');
+        } else {
+            addDebugInfo('❌ DEFAULT_TG не найден', 'error');
+        }
+        
+        // Проверяем DOM элементы
+        const catalog = document.getElementById('catalog');
+        if (catalog) {
+            addDebugInfo('✅ Элемент catalog найден', 'success');
+            addDebugInfo(`Стили catalog: ${catalog.style.cssText}`, 'info');
+        } else {
+            addDebugInfo('❌ Элемент catalog не найден', 'error');
+        }
+    </script>
+    
+    <!-- Загружаем app.min.js -->
+    <script src="app.min.js"></script>
+</body>
+</html>
