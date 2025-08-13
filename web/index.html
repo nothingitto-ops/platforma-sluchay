@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<title>platforma.sluchay</title>
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+
+<!-- preload hero banners to avoid slow first paint -->
+<link rel="preload" as="image" href="../img/bannerh.jpg">
+<link rel="prefetch" as="image" href="../img/banner.jpg">
+
+<!-- Шрифты: Inter (текст) + Inter Display (тонкие заголовки) -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Inter+Display:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- Fallback для старых браузеров -->
+<script>
+  // Проверяем поддержку современных возможностей
+  if (!window.requestAnimationFrame) {
+    window.requestAnimationFrame = function(callback) {
+      return setTimeout(callback, 16);
+    };
+  }
+  if (!window.cancelAnimationFrame) {
+    window.cancelAnimationFrame = function(id) {
+      clearTimeout(id);
+    };
+  }
+</script>
+
+    <link rel="stylesheet" href="styles.min.css?v=20250813_2345">
+<link rel="stylesheet" href="mobile.overrides.css?v=9">
+<link rel="stylesheet" href="card-titles.css">
+</head>
+<body>
+  <div class="brand">platforma.sluchay</div>
+  <nav class="topnav" aria-label="Навигация по разделам">
+    <button class="tab active" data-tab="home">главная</button>
+    <button class="tab" data-tab="nessffo">nessffo collection</button>
+  </nav>
+
+  <img class="hero" alt="" decoding="async" fetchpriority="high">
+
+  <div class="filters" id="filters" aria-label="Фильтр наличия">
+    <button class="fbtn active" data-filter="all">все</button>
+    <button class="fbtn" data-filter="stock">в наличии</button>
+    <button class="fbtn" data-filter="preorder">под заказ</button>
+    <button class="care-btn" id="careBtn" aria-label="Показать руководство по уходу" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      </svg>
+      руководство
+    </button>
+
+  </div>
+
+  <div class="care-panel" id="carePanel" role="region" aria-labelledby="careTitle">
+    <h4 id="careTitle">Руководство по уходу за изделиями с цианотипией</h4>
+    <ul>
+      <li>Избегайте стирки агрессивными и щелочными средствами — это вызывает выцветание.</li>
+      <li>Стирать вручную в <strong>холодной воде</strong> с мягким мылом или детским шампунем.</li>
+      <li>Не стирайте в машине и не используйте отбеливатели.</li>
+      <li>Храните в сухом, прохладном месте, вдали от прямых солнечных лучей.</li>
+    </ul>
+  </div>
+
+  <main class="catalog" id="catalog" style="opacity:0;visibility:hidden;display:none"></main>
+
+  <footer class="site-footer" aria-label="Нижняя информация">
+    <div class="row">
+      <div class="social">
+        <a href="https://www.instagram.com/platforma.sluchay" target="_blank" rel="noopener" aria-label="Мы в Instagram">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>
+        </a>
+        <a href="https://t.me/stub123" target="_blank" rel="noopener" aria-label="Мы в Telegram">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.7 16.6l-.3 4.2c.4 0 .6-.2 .8-.4l2-1.9 4.2 3.1c.8.4 1.4.2 1.6-.7l2.9-13.6c.3-1.1-.4-1.6-1.2-1.3L3.2 10.3c-1 .4-1 1 0 1.3l4.1 1.3 9.6-6.1c.5-.3 .9-.1 .5.3l-7.7 6.5z" fill="currentColor"/></svg>
+        </a>
+      </div>
+      <div class="credit">© platforma.sluchay</div>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="sheet" role="dialog" aria-modal="true" onclick="event.stopPropagation()">
+      <button class="close-btn" id="closeBtn" type="button" aria-label="Закрыть">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="left">
+        <div class="viewer" id="viewer">
+          <img id="viewerImg" alt="" draggable="false">
+          <button class="zoom-btn" id="zoomBtn" aria-label="Увеличить" title="Увеличить">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+              <line x1="16" y1="16" x2="21" y2="21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="thumbs" id="thumbs"></div>
+      </div>
+      <div class="right">
+        <h2 class="title" id="mTitle"></h2>
+        <div class="modal-price" id="mPrice">
+          <span class="price-text"></span>
+          <div class="status" id="mStatus"></div>
+        </div>
+        <p class="desc" id="mDesc"></p>
+        <p class="meta" id="mMeta"></p>
+
+        <a class="cta" id="mLink" target="_blank" rel="noopener">Заказать в Telegram</a>
+      </div>
+    </div>
+  </div>
+
+    <script src="app.min.js.force?v=20250813_2353"></script>
+</body>
+</html>
