@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест сайта</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-item { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
+        .test-image { max-width: 100px; height: auto; }
+    </style>
+</head>
+<body>
+    <h1>Тест загрузки данных</h1>
+    <div id="test-results"></div>
+
+    <!-- Загружаем app.min.js ПЕРЕД проверкой данных -->
+    <script src="app.min.js"></script>
+    
+    <script>
+        // Загружаем данные из app.min.js
+        const testResults = document.getElementById('test-results');
+        
+        // Проверяем, загружен ли app.min.js
+        if (typeof items !== 'undefined') {
+            testResults.innerHTML = `
+                <h2>✅ Данные загружены успешно!</h2>
+                <p>Найдено товаров: ${items.length}</p>
+                <div id="items-list"></div>
+            `;
+            
+            const itemsList = document.getElementById('items-list');
+            items.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'test-item';
+                itemDiv.innerHTML = `
+                    <h3>${index + 1}. ${item.title}</h3>
+                    <p>Цена: ${item.price}</p>
+                    <p>Изображения: ${item.images.length} шт.</p>
+                    <p>Статус: ${item.status}</p>
+                    ${item.images.length > 0 ? `<img src="img/${item.images[0]}" class="test-image" onerror="this.style.display='none'">` : ''}
+                `;
+                itemsList.appendChild(itemDiv);
+            });
+        } else {
+            testResults.innerHTML = `
+                <h2>❌ Данные не загружены!</h2>
+                <p>Переменная 'items' не найдена.</p>
+                <p>Проверьте, что файл app.min.js загружается корректно.</p>
+            `;
+        }
+    </script>
+</body>
+</html>

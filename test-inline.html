@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Inline</title>
+    <style>
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        .card-img img {
+            max-width: 100%;
+            height: auto;
+        }
+        .price {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Тест карточек (встроенный JavaScript)</h1>
+    <div id="debug"></div>
+    <main class="catalog" id="catalog"></main>
+
+    <script>
+        console.log('Скрипт загружен');
+        
+        const items = [
+            {
+                "images": ["product_2/product_2_1.jpg"],
+                "title": "Пояс-юбка",
+                "price": "3000 р.",
+                "desc": "Пояс, который имеет функцию мешка",
+                "meta": "Состав: 50% хлопок 50% лён",
+                "link": "https://t.me/stub123",
+                "status": "stock",
+                "order": 2,
+                "section": "home"
+            },
+            {
+                "images": ["product_3/product_3_1.jpg"],
+                "title": "Пояс P1",
+                "price": "3500 р.",
+                "desc": "Пояс, который имеет функцию мешка",
+                "meta": "Состав: 100% хлопок (цвет на выбор)",
+                "link": "https://t.me/stub123",
+                "status": "stock",
+                "order": 3,
+                "section": "home"
+            }
+        ];
+
+        const $catalog = document.getElementById('catalog');
+        const $debug = document.getElementById('debug');
+        
+        console.log('Товары:', items);
+        console.log('Каталог:', $catalog);
+        
+        $debug.innerHTML = `
+            <p>Товаров: ${items.length}</p>
+            <p>Каталог найден: ${$catalog ? 'да' : 'нет'}</p>
+        `;
+        
+        if ($catalog) {
+            items.forEach(it => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                
+                const imgBox = document.createElement('div');
+                imgBox.className = 'card-img';
+                
+                const img = document.createElement('img');
+                img.src = 'img/' + it.images[0];
+                img.alt = it.title;
+                imgBox.appendChild(img);
+                card.appendChild(imgBox);
+                
+                const h3 = document.createElement('h3');
+                h3.textContent = it.title;
+                card.appendChild(h3);
+                
+                const price = document.createElement('div');
+                price.className = 'price';
+                price.textContent = it.price;
+                card.appendChild(price);
+                
+                $catalog.appendChild(card);
+            });
+            
+            console.log('Карточки созданы');
+        }
+    </script>
+</body>
+</html>

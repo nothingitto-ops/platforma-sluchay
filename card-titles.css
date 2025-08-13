@@ -1,0 +1,24 @@
+/* Стили для названий карточек товаров */
+.card h3 {
+    margin: 12px 0 2px;
+    text-align: center;
+    font-weight: 300; /* тонкий шрифт */
+    font-size: 22px;
+    letter-spacing: .2px;
+    padding: 0 8px;
+}
+
+/* Мобильные устройства */
+@media (max-width: 768px) {
+    .card h3 {
+        font-size: 16px;
+        margin: 8px 0 2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card h3 {
+        font-size: 14px;
+        margin: 6px 0 2px;
+    }
+}
