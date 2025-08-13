@@ -4,13 +4,13 @@
     "order": "1",
     "section": "home",
     "title": "Пояс-юбка",
-    "price": "3000 р.",
+    "price": "3001 р.",
     "desc": "Пояс, который имеет функцию мешка",
     "meta": "Состав: 50% хлопок 50% лён",
     "status": "stock",
     "images": "product_2/product_2_1.jpg,product_2/product_2_2.jpg,product_2/product_2_3.jpg,product_2/product_2_4.jpg",
     "link": "https://t.me/stub123",
-    "updated": "2025-08-13T21:59:12.410841"
+    "updated": "2025-08-13T23:50:00.000000"
   },
   {
     "id": "3",

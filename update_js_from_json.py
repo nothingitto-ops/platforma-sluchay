@@ -12,7 +12,7 @@ def update_js_from_json():
     
     # Загружаем данные из products.json
     try:
-        with open('web/products.json', 'r', encoding='utf-8') as f:
+        with open('products.json', 'r', encoding='utf-8') as f:
             products = json.load(f)
         print(f"✅ Загружено {len(products)} товаров из products.json")
     except Exception as e:
@@ -21,7 +21,7 @@ def update_js_from_json():
     
     # Читаем текущий app.min.js
     try:
-        with open('web/app.min.js', 'r', encoding='utf-8') as f:
+        with open('app.min.js', 'r', encoding='utf-8') as f:
             js_content = f.read()
         print("✅ Загружен app.min.js")
     except Exception as e:
@@ -81,13 +81,13 @@ const items = [
     
     # Сохраняем обновленный файл
     try:
-        with open('web/app.min.js', 'w', encoding='utf-8') as f:
+        with open('app.min.js', 'w', encoding='utf-8') as f:
             f.write(new_js_content)
         print("✅ app.min.js обновлен")
         
         # Создаем резервную копию
         backup_name = f"app.min.js.backup_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
-        with open(f'web/{backup_name}', 'w', encoding='utf-8') as f:
+        with open(backup_name, 'w', encoding='utf-8') as f:
             f.write(js_content)
         print(f"✅ Создана резервная копия: {backup_name}")
         
