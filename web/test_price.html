@@ -9,8 +9,11 @@
     <h1>Тест отображения цены</h1>
     <div id="price-display"></div>
     
+    <script src="cache-bust.js"></script>
     <script>
-        fetch('products.json')
+        // Используем кеш-бастинг для загрузки данных
+        const timestamp = new Date().getTime();
+        fetch(`products.json?v=${timestamp}`)
             .then(response => response.json())
             .then(data => {
                 const product = data.find(p => p.id === "2");
@@ -20,6 +23,7 @@
                         <p>Цена: <strong>${product.price}</strong></p>
                         <p>ID: ${product.id}</p>
                         <p>Order: ${product.order}</p>
+                        <p>Время загрузки: ${new Date().toLocaleString()}</p>
                     `;
                 } else {
                     document.getElementById('price-display').innerHTML = '<p>Товар не найден</p>';
