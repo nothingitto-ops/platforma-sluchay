@@ -4,13 +4,13 @@
     "order": "1",
     "section": "home",
     "title": "Пояс-юбка",
-    "price": "3000 р.",
+    "price": "3001 р.",
     "desc": "Пояс, который имеет функцию мешка",
     "meta": "Состав: 50% хлопок 50% лён",
     "status": "stock",
     "images": "product_2/product_2_1.jpg,product_2/product_2_2.jpg,product_2/product_2_3.jpg,product_2/product_2_4.jpg",
     "link": "https://t.me/stub123",
-    "updated": "2025-08-13T14:08:10.366765"
+    "updated": "2025-08-13T21:59:12.410841"
   },
   {
     "id": "3",
@@ -23,7 +23,7 @@
     "status": "stock",
     "images": "product_3/product_3_1.jpg,product_3/product_3_2.jpg,product_3/product_3_3.jpg,product_3/product_3_4.jpg",
     "link": "https://t.me/stub123",
-    "updated": "2025-08-13T14:08:10.366809"
+    "updated": "2025-08-13T21:59:12.410894"
   },
   {
     "id": "4",
@@ -36,7 +36,7 @@
     "status": "preorder",
     "images": "product_4/product_4_1.jpg,product_4/product_4_2.jpg,product_4/product_4_3.jpg,product_4/product_4_4.jpg,product_4/product_4_5.jpg,product_4/product_4_6.jpg",
     "link": "https://t.me/stub123",
-    "updated": "2025-08-13T14:08:10.366813"
+    "updated": "2025-08-13T21:59:12.410920"
   },
   {
     "id": "5",
@@ -49,7 +49,7 @@
     "status": "preorder",
     "images": "product_5/product_5_1.jpg,product_5/product_5_2.jpg,product_5/product_5_3.jpg,product_5/product_5_4.jpg,product_5/product_5_5.jpg",
     "link": "https://t.me/stub123",
-    "updated": "2025-08-13T14:08:10.366816"
+    "updated": "2025-08-13T21:59:12.410929"
   },
   {
     "id": "6",
@@ -62,7 +62,7 @@
     "status": "preorder",
     "images": "product_6/product_6_1.jpg,product_6/product_6_2.jpg,product_6/product_6_3.jpg,product_6/product_6_4.jpg,product_6/product_6_5.jpg,product_6/product_6_6.jpg",
     "link": "https://t.me/stub123",
-    "updated": "2025-08-13T14:08:10.366819"
+    "updated": "2025-08-13T21:59:12.410936"
   },
   {
     "id": "8",
@@ -75,7 +75,7 @@
     "status": "preorder",
     "images": "product_8/product_8_1.jpg,product_8/product_8_2.jpg,product_8/product_8_3.jpg,product_8/product_8_4.jpg",
     "link": "https://t.me/stub123",
-    "updated": "2025-08-13T14:08:10.366822"
+    "updated": "2025-08-13T21:59:12.410943"
   },
   {
     "id": "9",
@@ -88,7 +88,7 @@
     "status": "stock",
     "images": "product_9/product_9_1.jpg,product_9/product_9_2.jpg,product_9/product_9_3.jpg",
     "link": "https://t.me/stub123",
-    "updated": "2025-08-13T14:08:10.366825"
+    "updated": "2025-08-13T21:59:12.410949"
   },
   {
     "id": "10",
@@ -101,7 +101,7 @@
     "status": "preorder",
     "images": "product_10/product_10_1.jpg,product_10/product_10_2.jpg,product_10/product_10_3.jpg",
     "link": "https://t.me/stub123",
-    "updated": "2025-08-13T14:08:10.366827"
+    "updated": "2025-08-13T21:59:12.411018"
   },
   {
     "id": "11",
@@ -114,7 +114,7 @@
     "status": "stock",
     "images": "product_11/product_11_1.jpg,product_11/product_11_2.jpg,product_11/product_11_3.jpg,product_11/product_11_4.jpg",
     "link": "https://t.me/stub123",
-    "updated": "2025-08-13T14:08:10.366830"
+    "updated": "2025-08-13T21:59:12.411064"
   },
   {
     "id": "12",
@@ -127,7 +127,7 @@
     "status": "stock",
     "images": "product_12/product_12_1.jpg,product_12/product_12_2.jpg,product_12/product_12_3.jpg,product_12/product_12_4.jpg",
     "link": "https://t.me/stub123",
-    "updated": "2025-08-13T14:08:10.366832"
+    "updated": "2025-08-13T21:59:12.411073"
   },
   {
     "id": "1",
@@ -140,7 +140,7 @@
     "status": "stock",
     "images": "product_1/product_1_1.jpg,product_1/product_1_2.jpg,product_1/product_1_3.jpg,product_1/product_1_4.jpg",
     "link": "https://t.me/stub123",
-    "updated": "2025-08-13T14:08:10.366835"
+    "updated": "2025-08-13T21:59:12.411079"
   },
   {
     "id": "7",
@@ -153,6 +153,6 @@
     "status": "stock",
     "images": "product_7/product_7_1.jpg,product_7/product_7_2.jpg,product_7/product_7_3.jpg,product_7/product_7_4.jpg",
     "link": "https://t.me/stub123",
-    "updated": "2025-08-13T16:34:00.000000"
+    "updated": "2025-08-13T21:59:12.411087"
   }
 ]
