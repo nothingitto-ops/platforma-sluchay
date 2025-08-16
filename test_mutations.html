@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Тест мутаций DOM</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        pre { background: #f5f5f5; padding: 15px; border-radius: 5px; }
+        .test-btn { 
+            background: #007acc; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            margin: 10px 0;
+        }
+        .test-btn:hover { background: #005a9e; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Тест мутаций DOM</h1>
+    
+    <h2>Шаг 1: Откройте основную страницу</h2>
+    <p>Перейдите на <a href="index.html" target="_blank">http://localhost:8000/web/index.html</a></p>
+    
+    <h2>Шаг 2: Откройте консоль браузера</h2>
+    <p>Нажмите F12 или правой кнопкой → "Просмотреть код" → вкладка "Console"</p>
+    
+    <h2>Шаг 3: Вставьте код для мониторинга мутаций</h2>
+    <button class="test-btn" onclick="copyCode()">📋 Скопировать код</button>
+    <pre id="code">
+const grid = document.querySelector('.catalog');
+new MutationObserver(muts=>{
+  let added=0, removed=0;
+  muts.forEach(m=>{added+=m.addedNodes.length; removed+=m.removedNodes.length;});
+  console.log('children added:',added,'removed:',removed);
+}).observe(grid,{childList:true});
+    </pre>
+    
+    <h2>Шаг 4: Переключайте фильтры</h2>
+    <p>На основной странице переключайте фильтры "все", "в наличии", "под заказ"</p>
+    
+    <h2>Шаг 5: Анализируйте результаты</h2>
+    <ul>
+        <li><strong>❌ Плохо:</strong> Если видите <code>children added: X, removed: Y</code> где X > 0 или Y > 0</li>
+        <li><strong>✅ Хорошо:</strong> Если видите только <code>children added: 0, removed: 0</code></li>
+    </ul>
+    
+    <h2>Ожидаемый результат</h2>
+    <p>После наших исправлений должно быть:</p>
+    <ul>
+        <li>✅ <code>children added: 0, removed: 0</code> при переключении фильтров</li>
+        <li>✅ Нет мерцания карточек</li>
+        <li>✅ Плавные анимации появления/исчезновения</li>
+        <li>✅ Работает листание изображений при наведении</li>
+    </ul>
+
+    <script>
+        function copyCode() {
+            const code = document.getElementById('code').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                alert('Код скопирован в буфер обмена!');
+            });
+        }
+    </script>
+</body>
+</html>

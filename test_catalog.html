@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест каталога</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .card:hover {
+            background-color: #f5f5f5;
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin: 5px 0;
+        }
+        .status.stock {
+            background-color: #e8f5e8;
+            color: #2e7d32;
+        }
+        .status.preorder {
+            background-color: #fff3e0;
+            color: #a86800;
+        }
+    </style>
+</head>
+<body>
+    <h1>Тест каталога</h1>
+    <div id="catalog" class="catalog"></div>
+    
+    <script>
+        // Простые данные для теста
+        const testItems = [
+            {
+                "images": ["product_2/product_2_1.jpg"],
+                "title": "Пояс-юбка",
+                "price": "3000 р.",
+                "desc": "Пояс, который имеет функцию мешка",
+                "status": "stock",
+                "section": "home"
+            },
+            {
+                "images": ["product_5/product_5_1.jpg"],
+                "title": "Штаны с поясом U2",
+                "price": "5800 р.",
+                "desc": "Свободные штаны с укороченным поясом-юбкой",
+                "status": "preorder",
+                "section": "home"
+            }
+        ];
+
+        function renderCatalog(items) {
+            const catalog = document.getElementById('catalog');
+            catalog.innerHTML = '';
+            
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                
+                const img = document.createElement('img');
+                img.src = 'img/' + item.images[0];
+                img.alt = item.title;
+                
+                const title = document.createElement('h3');
+                title.textContent = item.title;
+                
+                const price = document.createElement('div');
+                price.textContent = item.price;
+                price.style.fontWeight = 'bold';
+                
+                const status = document.createElement('div');
+                status.className = `status ${item.status}`;
+                status.textContent = item.status === 'stock' ? 'в наличии' : 'под заказ';
+                
+                card.appendChild(img);
+                card.appendChild(title);
+                card.appendChild(price);
+                card.appendChild(status);
+                
+                card.addEventListener('click', () => {
+                    alert(`Клик по карточке: ${item.title}`);
+                });
+                
+                catalog.appendChild(card);
+            });
+        }
+
+        // Рендерим каталог при загрузке
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM загружен, рендерим каталог');
+            renderCatalog(testItems);
+        });
+    </script>
+</body>
+</html>

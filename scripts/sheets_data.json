@@ -1,0 +1,134 @@
+[
+  {
+    "id": "2",
+    "section": "4",
+    "title": "home",
+    "price": "Пояс-юбка",
+    "desc": "3000 р.",
+    "meta": "Пояс-юбка из натурального материала со сборкой и широкими лентами",
+    "status": "Состав: 50% хлопок 50% лён",
+    "images": "stock",
+    "link": "product_2/product_2_1.jpg,product_2/product_2_2.jpg,product_2/product_2_3.jpg,product_2/product_2_4.jpg"
+  },
+  {
+    "id": "3",
+    "section": "6",
+    "title": "home",
+    "price": "Пояс P1",
+    "desc": "3500 р.",
+    "meta": "Пояс, который имеет функцию мешка",
+    "status": "Состав: 100% (цвет на выбор)",
+    "images": "stock",
+    "link": "product_3/product_3_1.jpg,product_3/product_3_2.jpg,product_3/product_3_3.jpg,product_3/product_3_4.jpg"
+  },
+  {
+    "id": "4",
+    "section": "3",
+    "title": "home",
+    "price": "Рубашка",
+    "desc": "4000 р.",
+    "meta": "Лёгкая рубашка со свободными рукавами",
+    "status": "Состав: 100% вареный хлопок (цвет на выбор)",
+    "images": "preorder",
+    "link": "product_4/product_4_1.jpg,product_4/product_4_2.jpg,product_4/product_4_3.jpg,product_4/product_4_4.jpg,product_4/product_4_5.jpg,product_4/product_4_6.jpg"
+  },
+  {
+    "id": "5",
+    "section": "5",
+    "title": "home",
+    "price": "Штаны с поясом U2",
+    "desc": "5800 р.",
+    "meta": "Cвободные штаны с укороченным поясом-юбкой",
+    "status": "Состав: 100% вареный хлопок",
+    "images": "preorder",
+    "link": "product_5/product_5_1.jpg,product_5/product_5_2.jpg,product_5/product_5_3.jpg,product_5/product_5_4.jpg,product_5/product_5_5.jpg"
+  },
+  {
+    "id": "6",
+    "section": "2",
+    "title": "home",
+    "price": "Рубашка с вышивкой",
+    "desc": "8000 р.",
+    "meta": "Свободная рубашка из плотного хлопка с элементами ручной вышивки",
+    "status": "Состав: 100% хлопок · Деликатная стирка 30°C, после стирки рубашка может обрести эффект варёной ткани",
+    "images": "preorder",
+    "link": "product_6/product_6_1.jpg,product_6/product_6_2.jpg,product_6/product_6_3.jpg,product_6/product_6_4.jpg,product_6/product_6_5.jpg,product_6/product_6_6.jpg"
+  },
+  {
+    "id": "8",
+    "section": "1",
+    "title": "home",
+    "price": "Рубашка и шорты",
+    "desc": "7500 р.",
+    "meta": "Комплект одежды, рубашка со свободными рукавами и шорты",
+    "status": "Состав: 100% вареный хлопок (цвет на выбор)",
+    "images": "preorder",
+    "link": "product_8/product_8_1.jpg,product_8/product_8_2.jpg,product_8/product_8_3.jpg,product_8/product_8_4.jpg"
+  },
+  {
+    "id": "12",
+    "section": "9",
+    "title": "home",
+    "price": "Платок на шею",
+    "desc": "1500 р.",
+    "meta": "Платок серого цвета",
+    "status": "Состав: 100% жатая вискоза  Деликатная стирка 30°C",
+    "images": "stock",
+    "link": "product_12/product_12_1.jpg,product_12/product_12_2.jpg,product_12/product_12_3.jpg,product_12/product_12_4.jpg"
+  },
+  {
+    "id": "10",
+    "section": "8",
+    "title": "home",
+    "price": "Штаны с поясом U1",
+    "desc": "6000 р.",
+    "meta": "Свободные штаны с поясом-юбкой",
+    "status": "Состав: 100% вареный хлопок (цвет на выбор)",
+    "images": "preorder",
+    "link": "product_10/product_10_1.jpg,product_10/product_10_2.jpg,product_10/product_10_3.jpg"
+  },
+  {
+    "id": "11",
+    "section": "10",
+    "title": "home",
+    "price": "Фартук",
+    "desc": "3000 р.",
+    "meta": "Фартук имеет карман и бретель, которая регулирует длину при помощи пуговицы",
+    "status": "Состав: 100% вареный хлопок (цвет на выбор)",
+    "images": "stock",
+    "link": "product_11/product_11_1.jpg,product_11/product_11_2.jpg,product_11/product_11_3.jpg,product_11/product_11_4.jpg"
+  },
+  {
+    "id": "12",
+    "section": "9",
+    "title": "home",
+    "price": "Платок на шею",
+    "desc": "1500 р.",
+    "meta": "Платок молочного цвета",
+    "status": "Состав: 100% жатая вискоза  Деликатная стирка 30°C",
+    "images": "stock",
+    "link": "product_12/product_12_1.jpg|product_12/product_12_2.jpg|product_12/product_12_3.jpg|product_12/product_12_4.jpg"
+  },
+  {
+    "id": "1",
+    "section": "1",
+    "title": "nessffo",
+    "price": "Пояс цветочный",
+    "desc": "3600 р.",
+    "meta": "Пояс, созданный совместно с nessffo, рисунок при помощи цианотипии",
+    "status": "Состав: 50% хлопок 50% лён",
+    "images": "stock",
+    "link": "product_1/product_1_1.jpg,product_1/product_1_2.jpg,product_1/product_1_3.jpg,product_1/product_1_4.jpg"
+  },
+  {
+    "id": "7",
+    "section": "2",
+    "title": "nessffo",
+    "price": "Сумка через плечо",
+    "desc": "4000 р.",
+    "meta": "Сумка, созданная совместно с nessffo, рисунок при помощи цианотипии",
+    "status": "Состав: 50% хлопок 50% лён",
+    "images": "stock",
+    "link": "product_7/product_7_1.jpg,product_7/product_7_2.jpg,product_7/product_7_3.jpg,product_7/product_7_4.jpg"
+  }
+]

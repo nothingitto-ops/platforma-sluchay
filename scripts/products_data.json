@@ -1,0 +1,112 @@
+[
+  {
+    "id": "product_2",
+    "title": "Пояс-юбка",
+    "price": "3 000 ₽",
+    "desc": "Пояс, который имеет функцию мешка",
+    "meta": "Состав: 50% хлопок 50% лён",
+    "status": "stock",
+    "link": "https://t.me/stub123",
+    "section": "home",
+    "images": ["product_2/product_2_1.jpg", "product_2/product_2_2.jpg", "product_2/product_2_3.jpg", "product_2/product_2_4.jpg"]
+  },
+  {
+    "id": "product_3",
+    "title": "Пояс P1",
+    "price": "3 500 ₽",
+    "desc": "Пояс, который имеет функцию мешка",
+    "meta": "Состав: 100% хлопок (цвет на выбор)",
+    "status": "stock",
+    "link": "https://t.me/stub123",
+    "section": "home",
+    "images": ["product_3/product_3_1.jpg", "product_3/product_3_2.jpg", "product_3/product_3_3.jpg", "product_3/product_3_4.jpg"]
+  },
+  {
+    "id": "product_4",
+    "title": "Рубашка",
+    "price": "4 000 ₽",
+    "desc": "Лёгкая рубашка со свободными рукавами",
+    "meta": "Состав: 100% вареный хлопок (цвет на выбор)",
+    "status": "preorder",
+    "link": "https://t.me/stub123",
+    "section": "home",
+    "images": ["product_4/product_4_1.jpg", "product_4/product_4_2.jpg", "product_4/product_4_3.jpg", "product_4/product_4_4.jpg", "product_4/product_4_5.jpg", "product_4/product_4_6.jpg"]
+  },
+  {
+    "id": "product_5",
+    "title": "Штаны с поясом U2",
+    "price": "5 800 ₽",
+    "desc": "Свободные штаны с укороченным поясом-юбкой",
+    "meta": "Состав: 100% вареный хлопок (цвет на выбор)",
+    "status": "preorder",
+    "link": "https://t.me/stub123",
+    "section": "home",
+    "images": ["product_5/product_5_1.jpg", "product_5/product_5_2.jpg", "product_5/product_5_3.jpg", "product_5/product_5_4.jpg", "product_5/product_5_5.jpg"]
+  },
+  {
+    "id": "product_6",
+    "title": "Рубашка с вышивкой",
+    "price": "8 000 ₽",
+    "desc": "Рубашка с вышивкой",
+    "meta": "Состав: 100% хлопок · Деликатная стирка 30°C, после стирки рубашка может обрести эффект варёной ткани",
+    "status": "preorder",
+    "link": "https://t.me/stub123",
+    "section": "home",
+    "images": ["product_6/product_6_1.jpg", "product_6/product_6_2.jpg", "product_6/product_6_3.jpg", "product_6/product_6_4.jpg", "product_6/product_6_5.jpg", "product_6/product_6_6.jpg"]
+  },
+  {
+    "id": "product_8",
+    "title": "Рубашка и шорты",
+    "price": "7 500 ₽",
+    "desc": "Рубашка и шорты",
+    "meta": "Состав: 100% вареный хлопок (цвет на выбор)",
+    "status": "preorder",
+    "link": "https://t.me/stub123",
+    "section": "home",
+    "images": ["product_8/product_8_1.jpg", "product_8/product_8_2.jpg", "product_8/product_8_3.jpg", "product_8/product_8_4.jpg"]
+  },
+  {
+    "id": "product_9",
+    "title": "Платок на шею",
+    "price": "1 000 ₽",
+    "desc": "Платок серого цвета",
+    "meta": "Состав: 100% жатая вискоза · Деликатная стирка 30°C",
+    "status": "stock",
+    "link": "https://t.me/stub123",
+    "section": "home",
+    "images": ["product_9/product_9_1.jpg", "product_9/product_9_2.jpg", "product_9/product_9_3.jpg"]
+  },
+  {
+    "id": "product_10",
+    "title": "Штаны с поясом U1",
+    "price": "6 000 ₽",
+    "desc": "Свободные штаны с поясом-юбкой",
+    "meta": "Состав: 100% вареный хлопок (цвет на выбор)",
+    "status": "preorder",
+    "link": "https://t.me/stub123",
+    "section": "home",
+    "images": ["product_10/product_10_1.jpg", "product_10/product_10_2.jpg", "product_10/product_10_3.jpg"]
+  },
+  {
+    "id": "product_11",
+    "title": "Фартук",
+    "price": "3 000 ₽",
+    "desc": "Фартук имеет карман и бретель, которая регулирует длину при помощи пуговицы",
+    "meta": "Состав: 100% хлопок (цвет на выбор)",
+    "status": "stock",
+    "link": "https://t.me/stub123",
+    "section": "home",
+    "images": ["product_11/product_11_1.jpg", "product_11/product_11_2.jpg", "product_11/product_11_3.jpg", "product_11/product_11_4.jpg"]
+  },
+  {
+    "id": "product_12",
+    "title": "Пояс Р1",
+    "price": "3 500 ₽",
+    "desc": "Пояс, который имеет функцию мешка",
+    "meta": "Состав: 100% хлопок (цвет на выбор)",
+    "status": "stock",
+    "link": "https://t.me/stub123",
+    "section": "home",
+    "images": ["product_12/product_12_1.jpg", "product_12/product_12_2.jpg", "product_12/product_12_3.jpg", "product_12/product_12_4.jpg"]
+  }
+]

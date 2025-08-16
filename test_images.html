@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест изображений</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .product-test {
+            border: 1px solid #ddd;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        .product-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .images-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .image-item {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f9f9f9;
+            position: relative;
+        }
+        .image-item img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+        .image-item.error {
+            background: #ffebee;
+            color: #c62828;
+            font-size: 12px;
+            text-align: center;
+        }
+        .status {
+            margin-top: 10px;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .status.success {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+        .status.error {
+            background: #ffebee;
+            color: #c62828;
+        }
+        .status.warning {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+    </style>
+</head>
+<body>
+    <h1>Тест загрузки изображений</h1>
+    
+    <div class="test-section">
+        <h2>Проверка данных из products.json</h2>
+        <div id="json-test-results"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Проверка встроенных данных</h2>
+        <div id="builtin-test-results"></div>
+    </div>
+
+    <script>
+        // Встроенные данные (как в app.min.js)
+        const builtinProducts = [
+            {
+                "id": "product_2",
+                "title": "Пояс-юбка",
+                "images": ["product_2/product_2_1.jpg", "product_2/product_2_2.jpg", "product_2/product_2_3.jpg", "product_2/product_2_4.jpg"]
+            },
+            {
+                "id": "product_3",
+                "title": "Пояс P1",
+                "images": ["product_3/product_3_1.jpg", "product_3/product_3_2.jpg", "product_3/product_3_3.jpg", "product_3/product_3_4.jpg"]
+            },
+            {
+                "id": "product_4",
+                "title": "Рубашка",
+                "images": ["product_4/product_4_1.jpg", "product_4/product_4_2.jpg", "product_4/product_4_3.jpg", "product_4/product_4_4.jpg", "product_4/product_4_5.jpg", "product_4/product_4_6.jpg"]
+            },
+            {
+                "id": "product_6",
+                "title": "Рубашка с вышивкой",
+                "images": ["product_6/product_6_1.jpg", "product_6/product_6_2.jpg", "product_6/product_6_3.jpg", "product_6/product_6_4.jpg", "product_6/product_6_5.jpg", "product_6/product_6_6.jpg"]
+            }
+        ];
+
+        function testImageLoad(imagePath) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.onload = () => resolve({ success: true, path: imagePath });
+                img.onerror = () => resolve({ success: false, path: imagePath, error: 'Не удалось загрузить' });
+                img.src = `img/${imagePath}`;
+            });
+        }
+
+        function testProductImages(product, isJson = false) {
+            const container = document.createElement('div');
+            container.className = 'product-test';
+            
+            const title = document.createElement('div');
+            title.className = 'product-title';
+            title.textContent = `${product.title} (${isJson ? 'JSON' : 'Встроенные данные'})`;
+            container.appendChild(title);
+            
+            const imagesList = document.createElement('div');
+            imagesList.className = 'images-list';
+            
+            // Обрабатываем разные форматы данных
+            const imagesArray = Array.isArray(product.images) ? product.images : product.images.split(',');
+            
+            const imagePromises = imagesArray.map(imagePath => testImageLoad(imagePath.trim()));
+            
+            Promise.all(imagePromises).then(results => {
+                let successCount = 0;
+                let errorCount = 0;
+                
+                results.forEach(result => {
+                    const imageItem = document.createElement('div');
+                    imageItem.className = `image-item ${result.success ? '' : 'error'}`;
+                    
+                    if (result.success) {
+                        const img = document.createElement('img');
+                        img.src = `img/${result.path}`;
+                        img.alt = result.path;
+                        imageItem.appendChild(img);
+                        successCount++;
+                    } else {
+                        imageItem.textContent = `Ошибка: ${result.path}`;
+                        errorCount++;
+                    }
+                    
+                    imagesList.appendChild(imageItem);
+                });
+                
+                const status = document.createElement('div');
+                status.className = `status ${errorCount === 0 ? 'success' : errorCount < successCount ? 'warning' : 'error'}`;
+                
+                if (errorCount === 0) {
+                    status.textContent = `✅ Все ${successCount} изображений загружены успешно`;
+                } else if (errorCount < successCount) {
+                    status.textContent = `⚠️ Загружено ${successCount} из ${successCount + errorCount} изображений`;
+                } else {
+                    status.textContent = `❌ Ошибка загрузки ${errorCount} из ${successCount + errorCount} изображений`;
+                }
+                
+                container.appendChild(imagesList);
+                container.appendChild(status);
+            });
+            
+            return container;
+        }
+
+        // Тестируем встроенные данные
+        const builtinContainer = document.getElementById('builtin-test-results');
+        builtinProducts.forEach(product => {
+            builtinContainer.appendChild(testProductImages(product, false));
+        });
+
+        // Тестируем данные из JSON
+        fetch('products.json')
+            .then(response => response.json())
+            .then(products => {
+                const jsonContainer = document.getElementById('json-test-results');
+                products.forEach(product => {
+                    jsonContainer.appendChild(testProductImages(product, true));
+                });
+            })
+            .catch(error => {
+                const jsonContainer = document.getElementById('json-test-results');
+                jsonContainer.innerHTML = `<div class="status error">Ошибка загрузки products.json: ${error.message}</div>`;
+            });
+    </script>
+</body>
+</html>

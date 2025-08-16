@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест цены</title>
+</head>
+<body>
+    <h1>Тест отображения цены</h1>
+    <div id="price-display"></div>
+    
+    <script src="cache-bust.js"></script>
+    <script>
+        // Используем кеш-бастинг для загрузки данных
+        const timestamp = new Date().getTime();
+        fetch(`products.json?v=${timestamp}`)
+            .then(response => response.json())
+            .then(data => {
+                const product = data.find(p => p.id === "2");
+                if (product) {
+                    document.getElementById('price-display').innerHTML = `
+                        <h2>${product.title}</h2>
+                        <p>Цена: <strong>${product.price}</strong></p>
+                        <p>ID: ${product.id}</p>
+                        <p>Order: ${product.order}</p>
+                        <p>Время загрузки: ${new Date().toLocaleString()}</p>
+                    `;
+                } else {
+                    document.getElementById('price-display').innerHTML = '<p>Товар не найден</p>';
+                }
+            })
+            .catch(error => {
+                document.getElementById('price-display').innerHTML = `<p>Ошибка: ${error}</p>`;
+            });
+    </script>
+</body>
+</html>

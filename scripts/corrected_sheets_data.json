@@ -1,0 +1,183 @@
+[
+  {
+    "images": [
+      "product_1/product_1_1.jpg",
+      "product_1/product_1_2.jpg",
+      "product_1/product_1_3.jpg",
+      "product_1/product_1_4.jpg"
+    ],
+    "title": "Пояс цветочный",
+    "price": "3600 р.",
+    "desc": "Пояс, созданный совместно с nessffo, рисунок при помощи цианотипии",
+    "meta": "Состав: 50% хлопок 50% лён",
+    "link": "https://t.me/stub123",
+    "status": "stock",
+    "order": 1
+  },
+  {
+    "images": [
+      "product_2/product_2_1.jpg",
+      "product_2/product_2_2.jpg",
+      "product_2/product_2_3.jpg",
+      "product_2/product_2_4.jpg"
+    ],
+    "title": "Пояс-юбка",
+    "price": "3000 р.",
+    "desc": "Пояс-юбка из натурального материала со сборкой и широкими лентами",
+    "meta": "Состав: 50% хлопок 50% лён",
+    "link": "https://t.me/stub123",
+    "status": "stock",
+    "order": 2
+  },
+  {
+    "images": [
+      "product_3/product_3_1.jpg",
+      "product_3/product_3_2.jpg",
+      "product_3/product_3_3.jpg",
+      "product_3/product_3_4.jpg"
+    ],
+    "title": "Пояс P1",
+    "price": "3500 р.",
+    "desc": "Пояс, который имеет функцию мешка",
+    "meta": "Состав: 100% (цвет на выбор)",
+    "link": "https://t.me/stub123",
+    "status": "stock",
+    "order": 3
+  },
+  {
+    "images": [
+      "product_4/product_4_1.jpg",
+      "product_4/product_4_2.jpg",
+      "product_4/product_4_3.jpg",
+      "product_4/product_4_4.jpg",
+      "product_4/product_4_5.jpg",
+      "product_4/product_4_6.jpg"
+    ],
+    "title": "Рубашка",
+    "price": "4000 р.",
+    "desc": "Лёгкая рубашка со свободными рукавами",
+    "meta": "Состав: 100% вареный хлопок (цвет на выбор)",
+    "link": "https://t.me/stub123",
+    "status": "preorder",
+    "order": 4
+  },
+  {
+    "images": [
+      "product_5/product_5_1.jpg",
+      "product_5/product_5_2.jpg",
+      "product_5/product_5_3.jpg",
+      "product_5/product_5_4.jpg",
+      "product_5/product_5_5.jpg"
+    ],
+    "title": "Штаны с поясом U2",
+    "price": "5800 р.",
+    "desc": "Cвободные штаны с укороченным поясом-юбкой",
+    "meta": "Состав: 100% вареный хлопок",
+    "link": "https://t.me/stub123",
+    "status": "preorder",
+    "order": 5
+  },
+  {
+    "images": [
+      "product_6/product_6_1.jpg",
+      "product_6/product_6_2.jpg",
+      "product_6/product_6_3.jpg",
+      "product_6/product_6_4.jpg",
+      "product_6/product_6_5.jpg",
+      "product_6/product_6_6.jpg"
+    ],
+    "title": "Рубашка с вышивкой",
+    "price": "8000 р.",
+    "desc": "Свободная рубашка из плотного хлопка с элементами ручной вышивки",
+    "meta": "Состав: 100% хлопок · Деликатная стирка 30°C, после стирки рубашка может обрести эффект варёной ткани",
+    "link": "https://t.me/stub123",
+    "status": "preorder",
+    "order": 6
+  },
+  {
+    "images": [
+      "product_7/product_7_1.jpg",
+      "product_7/product_7_2.jpg",
+      "product_7/product_7_3.jpg",
+      "product_7/product_7_4.jpg"
+    ],
+    "title": "Сумка через плечо",
+    "price": "4000 р.",
+    "desc": "Сумка, созданная совместно с nessffo, рисунок при помощи цианотипии",
+    "meta": "Состав: 50% хлопок 50% лён",
+    "link": "https://t.me/stub123",
+    "status": "stock",
+    "order": 7
+  },
+  {
+    "images": [
+      "product_8/product_8_1.jpg",
+      "product_8/product_8_2.jpg",
+      "product_8/product_8_3.jpg",
+      "product_8/product_8_4.jpg"
+    ],
+    "title": "Рубашка и шорты",
+    "price": "7500 р.",
+    "desc": "Комплект одежды, рубашка со свободными рукавами и шорты",
+    "meta": "Состав: 100% вареный хлопок (цвет на выбор)",
+    "link": "https://t.me/stub123",
+    "status": "preorder",
+    "order": 8
+  },
+  {
+    "images": [
+      "product_10/product_10_1.jpg",
+      "product_10/product_10_2.jpg",
+      "product_10/product_10_3.jpg"
+    ],
+    "title": "Штаны с поясом U1",
+    "price": "6000 р.",
+    "desc": "Свободные штаны с поясом-юбкой",
+    "meta": "Состав: 100% вареный хлопок (цвет на выбор)",
+    "link": "https://t.me/stub123",
+    "status": "preorder",
+    "order": 10
+  },
+  {
+    "images": [
+      "product_11/product_11_1.jpg",
+      "product_11/product_11_2.jpg",
+      "product_11/product_11_3.jpg",
+      "product_11/product_11_4.jpg"
+    ],
+    "title": "Фартук",
+    "price": "3000 р.",
+    "desc": "Фартук имеет карман и бретель, которая регулирует длину при помощи пуговицы",
+    "meta": "Состав: 100% вареный хлопок (цвет на выбор)",
+    "link": "https://t.me/stub123",
+    "status": "stock",
+    "order": 11
+  },
+  {
+    "images": [
+      "product_12/product_12_1.jpg",
+      "product_12/product_12_2.jpg",
+      "product_12/product_12_3.jpg",
+      "product_12/product_12_4.jpg"
+    ],
+    "title": "Платок на шею",
+    "price": "1500 р.",
+    "desc": "Платок серого цвета",
+    "meta": "Состав: 100% жатая вискоза  Деликатная стирка 30°C",
+    "link": "https://t.me/stub123",
+    "status": "stock",
+    "order": 12
+  },
+  {
+    "images": [
+      "product_12/product_12_1.jpg|product_12/product_12_2.jpg|product_12/product_12_3.jpg|product_12/product_12_4.jpg"
+    ],
+    "title": "Платок на шею",
+    "price": "1500 р.",
+    "desc": "Платок молочного цвета",
+    "meta": "Состав: 100% жатая вискоза  Деликатная стирка 30°C",
+    "link": "https://t.me/stub123",
+    "status": "stock",
+    "order": 12
+  }
+]
