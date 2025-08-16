@@ -1,6 +1,68 @@
 :root { --safe-bottom: env(safe-area-inset-bottom, 0px); }
 
+/* Smooth scroll для всей страницы */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Белый фон для всей страницы */
+body {
+  background: #fff !important;
+}
+
+/* Фиксация навигации при скролле */
+nav.topnav {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 100 !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(10px) saturate(140%) !important;
+  transition: background 0.25s ease, box-shadow 0.25s ease, backdrop-filter 0.25s ease !important;
+  border-radius: 0 !important;
+}
+
+nav.topnav.scrolled {
+  background: rgba(255, 255, 255, 0.36) !important;
+  backdrop-filter: blur(10px) saturate(140%) !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  border-radius: 14px !important;
+}
+
 @media (max-width: 768px) {
+  /* Простая настройка для прокрутки */
+  html, body {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow-y: visible !important;
+  }
+  
+  /* Исправляем main элемент */
+  main {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    background: #fff !important;
+  }
+  
+  /* Убеждаемся, что навигация работает на мобильных */
+  nav.topnav {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 100 !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(10px) saturate(140%) !important;
+    transition: background 0.25s ease, box-shadow 0.25s ease, backdrop-filter 0.25s ease !important;
+    border-radius: 0 !important;
+  }
+  
+  nav.topnav.scrolled {
+    background: rgba(255, 255, 255, 0.36) !important;
+    backdrop-filter: blur(10px) saturate(140%) !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+  }
   .care-btn {
     display: none !important;
   }
@@ -14,8 +76,8 @@
     border-radius: 0; /* Убираем скругления на мобильных */
     overflow: hidden;
     display: grid;
-    grid-template-rows: 50% 50%; /* Возвращаем нормальные пропорции */
-    padding: 8px 12px 0;
+    grid-template-rows: 70% 30%; /* Увеличиваем блок фотографий еще больше */
+    padding: 0; /* Убираем отступы для полной ширины изображений */
     /* Добавляем поддержку свайпов */
     touch-action: pan-y;
     /* Убираем transition по умолчанию - будем управлять анимацией через JS */
@@ -67,6 +129,83 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    /* Исправляем ширину изображений */
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* Исправляем размеры изображений для полной ширины */
+  .modal .viewer {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-height: 70vh !important;
+    position: relative !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .modal .viewer img {
+    width: 100vw !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    /* Улучшаем взаимодействие с изображением */
+    pointer-events: auto !important;
+    cursor: pointer !important;
+  }
+  
+  /* Улучшаем взаимодействие с контейнером изображения */
+  .modal .viewer {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    /* Убираем все возможные блокировки взаимодействия */
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    -webkit-touch-callout: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+  
+  /* Убираем блокировки взаимодействия с изображением */
+  .modal .viewer img {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    -webkit-touch-callout: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    /* Убираем все возможные фильтры */
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
+  
+  /* Исправляем позицию кнопки лупы */
+  .modal .zoom-btn {
+    position: absolute !important;
+    right: 12px !important;
+    bottom: 12px !important;
+    width: 40px !important;
+    height: 40px !important;
+    z-index: 10 !important;
+  }
+  
+  /* Исправляем позицию кнопки закрытия */
+  .modal .close-btn {
+    position: absolute !important;
+    top: 12px !important;
+    right: 12px !important;
+    width: 40px !important;
+    height: 40px !important;
+    z-index: 10 !important;
   }
   
   .modal .right {
@@ -74,7 +213,7 @@
     align-items: center; /* Центрируем элементы по вертикали */
     text-align: center; /* Центрируем текст */
     overflow-y: auto;
-    padding: 12px 16px calc(96px + var(--safe-bottom));
+    padding: 16px 20px calc(96px + var(--safe-bottom));
     /* Улучшаем скролл */
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
@@ -131,10 +270,33 @@
 
   .modal .status.in {
     color: #2e7d32;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
   }
 
   .modal .status.pre {
     color: #a86800;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  
+  /* Принудительно убираем все возможные обводки у статуса в модалке */
+  .modal .status {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  
+  /* Максимальная специфичность для статуса в модалке */
+  body .modal .status,
+  .modal .sheet .right .status,
+  .modal .status {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
   }
   
   /* Максимальная специфичность для переопределения всех стилей */
@@ -144,24 +306,21 @@
     font-size: 15px !important; 
     line-height: 1.5 !important; 
     margin: 4px 0 8px !important; /* Уменьшаем отступы */
-    text-align: center !important; /* Центрируем описание */
+    text-align: left !important; /* Выравниваем по левому краю */
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
     color: #555 !important;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 4 !important;
-    -webkit-box-orient: vertical !important;
-    overflow: hidden !important;
-    height: 6em !important; /* Принудительная высота для 4 строк */
-    max-height: 6em !important; /* Высота для 4 строк: 1.5 * 4 = 6em */
-    overflow-y: hidden !important;
+    display: block !important; /* Убираем ограничение строк */
+    overflow: visible !important; /* Показываем весь текст */
+    height: auto !important; /* Автоматическая высота */
+    max-height: none !important; /* Убираем ограничение высоты */
     padding: 0 8px !important; /* Отступы для прокрутки */
   }
   
   .modal .meta { 
     font-size: 13px; 
     color: #6b6b6b; 
-    text-align: center; /* Центрируем мета-информацию */
+    text-align: left; /* Выравниваем по левому краю */
     margin: 8px 0;
     padding: 0 8px; /* Отступы как у описания */
     word-wrap: break-word;
@@ -171,6 +330,22 @@
   /* Убираем памятку из модалки */
   .modal .care-inline {
     display: none !important;
+  }
+  
+  /* Убираем ограничения описания в модалке */
+  .modal .desc {
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    -webkit-box-orient: unset !important;
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    line-height: 1.5 !important;
+  }
+  
+  /* Выравниваем заголовок по левому краю */
+  .modal .title {
+    text-align: left !important;
   }
   
   /* Показываем памятку только на странице nessffo на мобильных */
@@ -209,7 +384,7 @@
     cursor: pointer;
     position: relative;
     text-align: center; /* Центрируем текст */
-    font-weight: 400;
+    font-weight: 600;
     color: #333;
     font-size: 12px;
     margin: 0 0 6px 0; /* Уменьшаем отступ снизу */
@@ -400,6 +575,104 @@
     user-select: none;
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: transparent;
+    /* Убираем синий overlay */
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
+  
+  /* Убираем синий overlay с контейнера изображения */
+  .viewer {
+    background: #fff !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
+  
+  /* Убираем синий overlay с кнопки лупы */
+  .zoom-btn {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    color: #333 !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
+  
+  /* Убираем синий overlay с кнопки закрытия */
+  .close-btn {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    color: #333 !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
+  
+  /* Дополнительные стили для устранения всех возможных overlay эффектов */
+  .modal * {
+    filter: none !important;
+    -webkit-filter: none !important;
+    backdrop-filter: none !important;
+  }
+  
+  /* Исключения для кнопок, где нужен backdrop-filter */
+  .modal .zoom-btn,
+  .modal .close-btn {
+    backdrop-filter: blur(8px) !important;
+  }
+  
+  /* Убираем все возможные цветовые наложения */
+  .modal .viewer::before,
+  .modal .viewer::after {
+    display: none !important;
+  }
+  
+  /* Принудительно убираем все overlay эффекты */
+  .modal .sheet {
+    background: #fff !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
+  
+
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 999px !important;
+    border: 0 !important;
+    background: rgba(0,0,0,.45) !important;
+    color: #fff !important;
+    font-size: 18px !important;
+    display: grid !important;
+    place-items: center !important;
+    backdrop-filter: saturate(1.2) blur(4px) !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+  }
+  
+
+    -moz-border: none !important;
+    border-width: 0 !important;
+    border-style: none !important;
+    border-color: transparent !important;
+  }
+  
+
+  }
+  
+
+
+  
+  /* Убираем все возможные отступы у модального окна */
+  .modal {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* Убираем отступы у левой части модального окна */
+  .modal .left {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
   }
 
   /* Исправляем проблему с наложением при скролле */
@@ -427,20 +700,67 @@
 
   /* fixed CTA above safe-area */
   #mLink.cta {
-    position: fixed;
-    left: 16px; right: 16px;
-    bottom: calc(12px + var(--safe-bottom));
-    z-index: 1001;
-    padding: 14px 20px;
-    border-radius: 14px;
-    font-size: 16px;
-    text-align: center !important; /* Принудительно центрируем текст кнопки */
+    position: fixed !important;
+    left: 0 !important; 
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 1001 !important;
+    padding: 14px 20px !important;
+    border-radius: 0 !important;
+    font-size: 16px !important;
+    text-align: center !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: calc(100% - 32px); /* Учитываем отступы */
-    box-sizing: border-box;
-    margin: 0 auto; /* Центрируем кнопку */
+    width: 100vw !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    background: #111 !important;
+    color: #fff !important;
+    border: none !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: background 0.2s ease !important;
+    transform: none !important;
+    border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+  }
+  
+  #mLink.cta:hover {
+    background: #333 !important;
+  }
+  
+  /* Убираем скругления у всех кнопок CTA */
+  .cta,
+  a.cta,
+  button.cta,
+  #mLink.cta,
+  .modal .cta,
+  .mobile-modal .cta {
+    border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+  
+  /* Принудительно убираем скругления у кнопки в модалке */
+  .modal .cta,
+  .mobile-modal .cta,
+  #mLink.cta {
+    border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
   
   /* Убираем индикатор для свайпа вверх */
@@ -448,6 +768,42 @@
     display: none;
   }
 
+  /* Стили для баннера */
+  .hero {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 40vh !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Стили для листания фото */
+  .viewer {
+    cursor: pointer !important;
+  }
+  
+  .mobile-main-image {
+    cursor: pointer !important;
+  }
+  
+  .mobile-zoom-content {
+    cursor: pointer !important;
+  }
+  
+  /* Убираем анимации при переключении фото */
+  .viewer img {
+    transition: none !important;
+  }
+  
+  .mobile-main-image img {
+    transition: none !important;
+  }
+  
   /* Возвращаем оригинальные размеры карточек как на фото */
   .card {
     /* Убираем принудительные пропорции */
@@ -459,19 +815,158 @@
     align-items: stretch; /* Растягиваем содержимое по ширине */
     background: transparent;
     cursor: pointer;
-    border-radius: 12px;
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,.08);
-    transition: transform .2s ease,box-shadow .2s ease;
+    box-shadow: none;
+    transition: none;
   }
   
-  /* Предотвращаем растягивание карточек при малом количестве товаров */
+  /* Простая настройка каталога */
   .catalog {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    padding: 12px;
-    align-items: start; /* Выравниваем карточки по верху */
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    padding: 0 12px !important;
+    margin: 24px auto 48px !important;
+    max-width: 1280px !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+  
+  /* Упрощенный статус везде - просто текст без обводки */
+  .status-pill {
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 4px 0 !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    text-align: center !important;
+    display: block !important;
+    width: 100% !important;
+  }
+  
+  .card .status {
+    font-size: 12px;
+    font-weight: 300;
+    color: #666;
+    margin: 0 0 12px 0;
+    text-align: center;
+    display: block !important;
+    visibility: visible !important;
+  }
+  
+  .card .status.in {
+    color: #2d5a2d;
+  }
+  
+  .card .status.pre {
+    color: #856404;
+  }
+  
+  /* Выравнивание цены в карточках */
+  .card .price {
+    text-align: center !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    margin: 8px 0 4px 0 !important;
+  }
+  
+  /* Стили для статусов в карточках */
+  .card .status {
+    font-size: 12px !important;
+    font-weight: 300 !important;
+    text-align: center !important;
+    margin: 4px 0 8px 0 !important;
+    display: block !important;
+  }
+  
+  .card .status.in {
+    color: #2d5a2d !important;
+  }
+  
+  .card .status.pre {
+    color: #856404 !important;
+  }
+  
+  /* Форматирование цены и статуса в модальном окне */
+  .modal-price-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important; /* Выравниваем по левому краю */
+    gap: 8px !important; /* Добавляем отступ между ценой и статусом */
+    width: 100% !important;
+  }
+  
+  .modal-status {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+  }
+  
+  .modal-status.in {
+    background: rgba(45, 90, 45, 0.1) !important;
+    color: #2d5a2d !important;
+  }
+  
+  .modal-status.pre {
+    background: rgba(133, 100, 4, 0.1) !important;
+    color: #856404 !important;
+  }
+  }
+  
+  /* Принудительно убираем отступы у статуса в модалке */
+  .modal-price-container .status-pill {
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  .modal-price-container .price-text {
+    font-size: 18px !important; /* Уменьшаем размер */
+    font-weight: 200 !important; /* Делаем еще тоньше */
+    color: #000 !important;
+    white-space: nowrap !important; /* Предотвращаем разрыв строки */
+    display: inline-block !important;
+  }
+  
+  .modal-price-container .status-pill {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    text-align: right !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+  }
+  
+
+  
+  .status-pill.in {
+    color: #2e7d32 !important;
+  }
+  
+  .status-pill.pre {
+    color: #a86800 !important;
+  }
+  
+  /* Убираем старые стили статусов */
+  .status, .modal-status {
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 4px 0 !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    text-align: center !important;
+  }
+  
+  .status.in, .modal-status.in {
+    color: #2e7d32 !important;
+  }
+  
+  .status.pre, .modal-status.pre {
+    color: #a86800 !important;
   }
   
   /* Делаем все карточки одинаковой высоты */
@@ -481,31 +976,38 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    cursor: pointer !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+    box-shadow: none !important;
+    transition: none !important;
+    margin-bottom: 0 !important;
   }
   
   .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(0,0,0,.12);
+    transform: none;
+    box-shadow: none;
   }
   
   /* Базовые стили для всех названий */
   .card h3 {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.3;
-    min-height: 42px; /* Минимальная высота для 2 строк */
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.2;
+    min-height: 44px; /* Минимальная высота для 2 строк */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: #333;
-    margin: 8px 0 4px 0; /* Возвращаем как было для двустрочных */
+    color: #222;
+    margin: 10px 0 6px 0; /* Увеличиваем отступы для более лаконичного вида */
   }
   
   /* Принудительно для однострочных названий */
   .card h3.single-line {
-    margin: 40px 0 10px 0 !important;
+    margin: 42px 0 8px 0 !important;
   }
   
 
@@ -527,33 +1029,26 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 8px 8px 0 0; /* Скругление только сверху у самой фотографии */
+    border-radius: 0; /* Убираем скругления для плоского вида */
   }
   
-  /* Исправляем grid для предотвращения наложения */
-  .catalog {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    padding: 12px;
-    /* Убираем принудительную минимальную высоту */
-  }
+
   
   /* Улучшенная типографика для карточек */
   /* Стили для .card h3 уже определены выше */
   
   .card .price {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
     color: #000;
-    margin: 0 0 4px 0;
+    margin: 0 0 3px 0;
     text-align: center;
   }
   
   .card .status {
-    font-size: 12px;
-    font-weight: 500;
-    color: #666;
+    font-size: 11px;
+    font-weight: 400;
+    color: #888;
     margin: 0 0 8px 0;
     text-align: center;
     display: block !important;
@@ -571,21 +1066,50 @@
 
 /* Десктопные стили для контейнера цены и статуса */
 @media (min-width: 769px) {
+  /* Десктопная сетка - 3 карточки в ряд */
+  .catalog {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px !important;
+    padding: 0 40px !important;
+  }
+  
   /* Стили для фильтров только в разделе nessffo */
   body[data-section="nessffo"] .filters {
     justify-content: space-between !important;
     align-items: center !important;
   }
   
-  body[data-section="nessffo"] .filters .care-btn {
-    margin-left: auto !important;
-  }
+
+  
+
   
   /* На главной странице фильтры остаются как были */
   body[data-section="home"] .filters {
     justify-content: flex-start !important;
     align-items: center !important;
   }
+  
+  /* Фильтры */
+  .filters {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    padding: 0 20px !important;
+    margin: 16px 0 !important;
+    width: 100% !important;
+    max-width: 1280px !important;
+  }
+  
+
+  
+  .filters-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+  
+
   
   .card {
     text-align: center !important;
@@ -628,12 +1152,69 @@
   }
 }
 
+/* Переопределяем стили для больших экранов - всегда 3 карточки в ряд */
+@media (min-width: 1101px) {
+  .catalog {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px !important;
+    padding: 0 40px !important;
+  }
+}
+
+/* Десктопная навигация с размытием и скруглениями */
+@media (min-width: 769px) {
+  nav.topnav {
+    background: rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(10px) saturate(140%) !important;
+    border-radius: 14px !important;
+    box-shadow: none !important;
+    transition: background 0.25s ease, backdrop-filter 0.25s ease !important;
+  }
+  
+  nav.topnav.scrolled {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) saturate(140%) !important;
+    border-radius: 14px !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Кнопка "Руководство" - общие стили */
+.care-btn {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  font: 500 14px/1.2 'Inter';
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(6px);
+}
+
+/* Панель руководства изначально свернута на десктопе */
+@media (min-width: 769px) {
+  .care-panel {
+    display: none !important;
+  }
+  
+  .care-panel.open {
+    display: block !important;
+  }
+}
+
 /* Кнопка "Руководство" для десктопной версии */
 .care-btn {
   display: none;
   align-items: center;
   gap: 8px;
   margin: 0;
+  margin-left: auto;
+  margin-right: 20px;
   padding: 8px 16px;
   background: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -656,6 +1237,348 @@
   height: 16px;
   opacity: 0.7;
 }
+
+/* НОВОЕ ДЕСКТОПНОЕ МОДАЛЬНОЕ ОКНО */
+@media (min-width: 769px) {
+  .modal {
+    display: none !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 20px !important;
+  }
+  
+  .modal.open {
+    display: flex !important;
+  }
+  
+  .modal .sheet {
+    display: flex !important;
+    width: 90vw !important;
+    max-width: 1200px !important;
+    height: 80vh !important;
+    max-height: 700px !important;
+    background: #fff !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+    position: relative !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Левая часть - фото */
+  .modal-left {
+    flex: 1 !important;
+    background: #000 !important;
+    position: relative !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    cursor: pointer !important;
+  }
+  
+  .modal-left img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+  
+  /* Кнопка увеличения */
+  .modal-left .zoom-btn {
+    position: absolute !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    width: 48px !important;
+    height: 48px !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    border: none !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 1000 !important;
+    transition: all 0.2s ease !important;
+    pointer-events: auto !important;
+дп    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+  }
+  
+  .modal-left .zoom-btn:hover {
+    background: rgba(0, 0, 0, 0.7) !important;
+    transform: scale(1.1) !important;
+  }
+  
+  /* Режим увеличения */
+  .modal-left.zoomed {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 10000 !important;
+    background: rgba(0, 0, 0, 0.9) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  .modal-left.zoomed img {
+    max-width: 90vw !important;
+    max-height: 90vh !important;
+    object-fit: contain !important;
+    cursor: pointer !important;
+  }
+  
+  /* Подсказки для перелистывания в режиме увеличения */
+  .modal-left.zoomed::before {
+    content: '←' !important;
+    position: fixed !important;
+    left: 20px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    color: white !important;
+    font-size: 48px !important;
+    opacity: 0.3 !important;
+    pointer-events: none !important;
+    z-index: 10002 !important;
+  }
+  
+  .modal-left.zoomed::after {
+    content: '→' !important;
+    position: fixed !important;
+    right: 20px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    color: white !important;
+    font-size: 48px !important;
+    opacity: 0.3 !important;
+    pointer-events: none !important;
+    z-index: 10002 !important;
+  }
+  
+  .modal-left.zoomed .zoom-btn {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    z-index: 10001 !important;
+  }
+  
+  .modal-left .zoom-btn svg {
+    width: 20px !important;
+    height: 20px !important;
+    color: white !important;
+    stroke: white !important;
+    pointer-events: none !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+  }
+  
+  /* Центральная часть - миниатюры */
+  .modal-center {
+    width: 80px !important;
+    background: #fff !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-left: -20px !important;
+    overflow-y: auto !important;
+    position: relative !important;
+  }
+  
+  .modal-center .thumbs {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 100% !important;
+  }
+  
+  .modal-center .thumb {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 0 !important;
+    cursor: pointer !important;
+    border: none !important;
+    opacity: 0.6 !important;
+    filter: grayscale(100%) !important;
+    background: none !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+  
+  .modal-center .thumb.active {
+    opacity: 1 !important;
+    filter: grayscale(0%) !important;
+    border: none !important;
+  }
+  
+  /* Отключаем все hover эффекты для миниатюр */
+  .modal-center .thumb:hover {
+    opacity: 0.6 !important;
+    filter: grayscale(100%) !important;
+    transform: none !important;
+  }
+  
+  .modal-center .thumb.active:hover {
+    opacity: 1 !important;
+    filter: grayscale(0%) !important;
+    transform: none !important;
+  }
+  
+
+  
+  /* Правая часть - информация */
+  .modal-right {
+    flex: 1 !important;
+    background: #fff !important;
+    padding: 40px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative !important;
+    height: 100% !important;
+    text-align: center !important;
+  }
+  
+  .modal-right .title {
+    font-size: 28px !important;
+    font-weight: 600 !important;
+    color: #222 !important;
+    margin: 0 0 20px 0 !important;
+    line-height: 1.2 !important;
+  }
+  
+  .modal-right .modal-price {
+    margin: 0 0 20px 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  
+  .modal-right .price-text {
+    font-size: 24px !important;
+    font-weight: 500 !important;
+    color: #222 !important;
+  }
+  
+  /* Статус товара */
+  .modal-right .modal-status {
+    padding: 4px 12px !important;
+    border-radius: 20px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+  }
+  
+  .modal-right .modal-status.pre {
+    background: #f4f1eb !important;
+    color: #8b7355 !important;
+  }
+  
+  .modal-right .modal-status.in {
+    background: #e8f5e8 !important;
+    color: #2d5a2d !important;
+  }
+  
+  .modal-right .desc {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    color: #666 !important;
+    margin: 0 0 20px 0 !important;
+  }
+  
+  .modal-right .meta {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    color: #888 !important;
+    margin: 0 0 30px 0 !important;
+  }
+  
+  /* Кнопка заказа для десктопной версии */
+  .modal-right .desktop-cta {
+    width: calc(100% - 80px) !important;
+    max-width: 345px !important;
+    padding: 16px 24px !important;
+    background: #000 !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    text-align: center !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    cursor: pointer !important;
+    transition: background 0.2s ease !important;
+    position: absolute !important;
+    bottom: 40px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+  
+  .modal-right .desktop-cta:hover {
+    background: #333 !important;
+  }
+  
+
+  
+
+  
+  .modal .cta.hidden {
+    display: none !important;
+  }
+  
+  .modal-right .cta:hover {
+    background: #333 !important;
+  }
+  
+  /* Кнопка закрытия */
+  .modal .close-btn {
+    position: absolute !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px !important;
+    height: 40px !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: none !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 10 !important;
+    transition: background 0.2s ease !important;
+  }
+  
+  .modal .close-btn:hover {
+    background: rgba(255, 255, 255, 1) !important;
+  }
+  
+  .modal .close-btn svg {
+    width: 20px !important;
+    height: 20px !important;
+    color: #333 !important;
+  }
+}
+
 
 /* Стили только для десктопной модалки */
 
@@ -692,3 +1615,500 @@
   background: rgba(168, 104, 0, 0.1) !important;
   color: #a86800 !important;
 }
+
+/* Принудительное убирание обводки у статуса товара */
+.modal .modal-price span,
+.modal .modal-price-container span {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  -webkit-border: none !important;
+  -moz-border: none !important;
+  -webkit-outline: none !important;
+  -moz-outline: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+}
+
+/* Дополнительные стили для всех span элементов в контейнерах с ценой */
+.modal .modal-price * {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Умные стили для баннера - десктоп показывает всю картинку, мобильные обрезают */
+@media (min-width: 769px) {
+  .hero {
+    max-height: none !important;
+    height: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    width: 100% !important;
+    display: block !important;
+    /* Убираем ограничения высоты */
+    min-height: auto !important;
+    /* Показываем всю картинку */
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+  }
+}
+
+/* Мобильные устройства - обрезаем баннер для лучшего UX */
+@media (max-width: 768px) {
+  .hero {
+    max-height: 40vh !important;
+    height: 40vh !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    width: 100% !important;
+    display: block !important;
+  }
+}
+
+/* НОВАЯ МОБИЛЬНАЯ МОДАЛКА */
+.mobile-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  overflow: hidden !important;
+}
+
+.mobile-modal.open {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-modal-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  position: relative;
+  overflow: hidden !important;
+}
+
+/* Зона изображений - уменьшаем пропорцию до 4:1 */
+.mobile-images-zone {
+  flex: 4;
+  position: relative;
+  background: #000;
+  overflow: hidden;
+}
+
+.mobile-main-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-main-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
+  pointer-events: none;
+  z-index: 1;
+}
+
+#mobileMainImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Точки навигации */
+.mobile-dots {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.mobile-dot {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: background 0.3s ease !important;
+  flex-shrink: 0 !important;
+  min-width: 8px !important;
+  min-height: 8px !important;
+  max-width: 8px !important;
+  max-height: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.mobile-dot.active {
+  background: #fff;
+}
+
+/* Кнопки действий на изображении */
+.mobile-image-actions {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+.mobile-close-btn,
+.mobile-zoom-btn {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.mobile-close-btn:hover,
+.mobile-zoom-btn:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.mobile-close-btn svg,
+.mobile-zoom-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+  /* Блок с информацией */
+  .mobile-info-block {
+    flex: 1;
+    padding: 8px 20px 100px 20px;
+    background: #fff;
+    overflow: hidden !important;
+    overflow-y: hidden !important;
+  }
+
+.mobile-title {
+  font-family: 'Inter Display', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.3;
+  margin: 0 0 16px 0;
+  color: #000;
+}
+
+.mobile-price {
+  margin-bottom: 16px;
+}
+
+.mobile-price-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #000;
+}
+
+.mobile-price {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mobile-desc-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 12px 0;
+  gap: 8px;
+  position: relative;
+  width: 100%;
+  min-height: 25px;
+}
+
+.mobile-desc {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
+  color: #333;
+  flex: 1;
+  min-width: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  padding-right: 40px;
+  min-height: 25px;
+}
+
+.mobile-composition-btn {
+  display: block !important;
+  background: #f0f0f0 !important;
+  color: #666 !important;
+  border: none !important;
+  border-radius: 50% !important;
+  width: 25px !important;
+  height: 25px !important;
+  padding: 0 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  margin: 0 !important;
+  cursor: pointer !important;
+  transition: background 0.2s ease, color 0.2s ease !important;
+  text-align: center !important;
+  line-height: 25px !important;
+  position: absolute !important;
+  right: 0 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 100 !important;
+  flex-shrink: 0 !important;
+}
+
+.mobile-composition-btn:hover {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.mobile-composition-btn.active {
+  background: #333;
+  color: #fff;
+  border-color: #333;
+}
+
+.mobile-meta {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.3;
+  margin: 0 0 24px 0;
+  color: #666;
+  word-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  min-height: 25px;
+  padding-right: 40px;
+}
+
+.mobile-cta {
+  display: block;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  padding: 25px 20px;
+  border-radius: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+  transition: background 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  border: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  min-height: 80px;
+}
+
+.mobile-cta:hover {
+  background: #333;
+}
+
+/* Модальное окно для увеличенного изображения */
+.mobile-zoom-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 1100;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-zoom-modal.open {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-zoom-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#mobileZoomImg {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  background: #fff;
+}
+
+.mobile-zoom-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.mobile-zoom-close-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.mobile-zoom-close-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Точки для зум модалки */
+#mobileZoomDots {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 1200;
+}
+
+.mobile-zoom-dot {
+  width: 8px !important;
+  height: 8px !important;
+  border: none !important;
+  border-radius: 50% !important;
+  background: rgba(0, 0, 0, 0.3) !important;
+  cursor: pointer !important;
+  transition: background 0.3s ease !important;
+  padding: 0 !important;
+  flex-shrink: 0 !important;
+  min-width: 8px !important;
+  min-height: 8px !important;
+  max-width: 8px !important;
+  max-height: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+}
+
+.mobile-zoom-dot.active {
+  background: rgba(0, 0, 0, 1) !important;
+}
+
+.mobile-zoom-dot:hover {
+  background: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Скрываем новую модалку на десктопе */
+@media (min-width: 769px) {
+  .mobile-modal,
+  .mobile-zoom-modal {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+}
+
+/* ПРИНУДИТЕЛЬНОЕ ИСПРАВЛЕНИЕ КНОПКИ - ДОЛЖНО БЫТЬ В САМОМ КОНЦЕ */
+#mLink.cta,
+.mobile-modal .cta,
+.mobile-modal a.cta,
+.mobile-modal button.cta,
+.mobile-modal #mLink.cta {
+  border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  left: 0 !important;
+  right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  transform: none !important;
+  box-sizing: border-box !important;
+}
+
+/* Дополнительно для всех кнопок CTA */
+.cta,
+a.cta,
+button.cta,
+#mLink.cta,
+.mobile-modal .cta,
+.mobile-modal a.cta,
+.mobile-modal button.cta {
+  border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+/* Полужирный заголовок руководства по уходу */
+#careTitle {
+  font-weight: 600 !important;
+}
+
+

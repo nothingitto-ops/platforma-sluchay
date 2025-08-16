@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Last-Modified" content="Thu, 15 Aug 2025 18:45:00 GMT" />
 <title>platforma.sluchay</title>
 
 <!-- Favicon -->
@@ -11,8 +15,8 @@
 <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
 
 <!-- preload hero banners to avoid slow first paint -->
-<link rel="preload" as="image" href="../img/bannerh.jpg">
-<link rel="prefetch" as="image" href="../img/banner.jpg">
+<link rel="preload" as="image" href="img/bannerh.jpg">
+<link rel="prefetch" as="image" href="img/banner.jpg">
 
 <!-- Шрифты: Inter (текст) + Inter Display (тонкие заголовки) -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Inter+Display:wght@300;400;600&display=swap" rel="stylesheet">
@@ -32,12 +36,13 @@
   }
 </script>
 
-    <link rel="stylesheet" href="styles.min.css?v=20250813_2345">
-<link rel="stylesheet" href="mobile.overrides.css?v=9">
-<link rel="stylesheet" href="card-titles.css">
+    <link rel="stylesheet" href="styles.min.css?v=20250814_0285&no_select=1">
+    <link rel="stylesheet" href="mobile.overrides.css?v=FORCE_UPDATE_20250815_231500&nocache=1&t=1734567890&cache=KILLED&force=RELOAD">
+    <link rel="stylesheet" href="card-titles.css">
 </head>
 <body>
   <div class="brand">platforma.sluchay</div>
+
   <nav class="topnav" aria-label="Навигация по разделам">
     <button class="tab active" data-tab="home">главная</button>
     <button class="tab" data-tab="nessffo">nessffo collection</button>
@@ -46,17 +51,20 @@
   <img class="hero" alt="" decoding="async" fetchpriority="high">
 
   <div class="filters" id="filters" aria-label="Фильтр наличия">
-    <button class="fbtn active" data-filter="all">все</button>
-    <button class="fbtn" data-filter="stock">в наличии</button>
-    <button class="fbtn" data-filter="preorder">под заказ</button>
+    <div class="filters-left">
+      <button class="fbtn active" data-filter="all">все</button>
+      <button class="fbtn" data-filter="stock">в наличии</button>
+      <button class="fbtn" data-filter="preorder">под заказ</button>
+    </div>
     <button class="care-btn" id="careBtn" aria-label="Показать руководство по уходу" style="display:none;">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
       </svg>
       руководство
     </button>
-
   </div>
+  
+
 
   <div class="care-panel" id="carePanel" role="region" aria-labelledby="careTitle">
     <h4 id="careTitle">Руководство по уходу за изделиями с цианотипией</h4>
@@ -93,32 +101,96 @@
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
       </button>
-      <div class="left">
-        <div class="viewer" id="viewer">
-          <img id="viewerImg" alt="" draggable="false">
-          <button class="zoom-btn" id="zoomBtn" aria-label="Увеличить" title="Увеличить">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="11" cy="11" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
-              <line x1="16" y1="16" x2="21" y2="21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-            </svg>
-          </button>
-        </div>
+      
+                      <!-- Левая часть - фото -->
+                <div class="modal-left" id="modalLeft">
+                  <img id="viewerImg" alt="" draggable="false">
+                  <button class="zoom-btn" id="zoomBtn" type="button" aria-label="Увеличить">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <path d="m21 21-4.35-4.35"></path>
+                      <line x1="11" y1="8" x2="11" y2="14"></line>
+                      <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                  </button>
+                </div>
+      
+      <!-- Центральная часть - миниатюры -->
+      <div class="modal-center">
         <div class="thumbs" id="thumbs"></div>
       </div>
-      <div class="right">
-        <h2 class="title" id="mTitle"></h2>
-        <div class="modal-price" id="mPrice">
-          <span class="price-text"></span>
-          <div class="status" id="mStatus"></div>
-        </div>
-        <p class="desc" id="mDesc"></p>
-        <p class="meta" id="mMeta"></p>
+      
+                      <!-- Правая часть - информация -->
+                <div class="modal-right">
+                  <h2 class="title" id="mTitle"></h2>
+                  <div class="modal-price" id="mPrice">
+                    <span class="price-text"></span>
+                  </div>
+                  <p class="desc" id="mDesc"></p>
+                  <p class="meta" id="mMeta"></p>
+                  <a class="desktop-cta" id="desktopLink" target="_blank" rel="noopener">Заказать в Telegram</a>
+                </div>
+                
 
-        <a class="cta" id="mLink" target="_blank" rel="noopener">Заказать в Telegram</a>
-      </div>
     </div>
   </div>
 
-    <script src="app.min.js.force?v=20250813_2353"></script>
+  <!-- НОВАЯ МОБИЛЬНАЯ МОДАЛКА -->
+  <div class="mobile-modal" id="mobileModal" aria-hidden="true" aria-modal="true" role="dialog">
+    <div class="mobile-modal-content">
+      <!-- Зона изображений 3x4 -->
+      <div class="mobile-images-zone">
+        <div class="mobile-main-image">
+          <img id="mobileMainImg" alt="" draggable="false">
+          <div class="mobile-dots" id="mobileDots"></div>
+          <div class="mobile-image-actions">
+            <button class="mobile-close-btn" id="mobileCloseBtn" type="button" aria-label="Закрыть">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+            <button class="mobile-zoom-btn" id="mobileZoomBtn" type="button" aria-label="Увеличить изображение">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Блок с информацией -->
+      <div class="mobile-info-block">
+        <h1 class="mobile-title" id="mobileTitle"></h1>
+        <div class="mobile-price" id="mobilePrice">
+          <span class="mobile-price-text"></span>
+        </div>
+        <div class="mobile-desc-container">
+          <p class="mobile-desc" id="mobileDesc"></p>
+          <button class="mobile-composition-btn" id="mobileCompositionBtn" type="button" title="Показать состав">?</button>
+        </div>
+      </div>
+      
+      <!-- Кнопка заказа -->
+      <a class="mobile-cta" id="mobileLink" target="_blank" rel="noopener">Заказать в Telegram</a>
+    </div>
+  </div>
+
+  <!-- МОДАЛЬНОЕ ОКНО ДЛЯ УВЕЛИЧЕННОГО ИЗОБРАЖЕНИЯ -->
+  <div class="mobile-zoom-modal" id="mobileZoomModal" aria-hidden="true" aria-modal="true" role="dialog">
+    <div class="mobile-zoom-content">
+      <img id="mobileZoomImg" alt="" draggable="false">
+      <div id="mobileZoomDots"></div>
+      <button class="mobile-zoom-close-btn" id="mobileZoomCloseBtn" type="button" aria-label="Закрыть увеличенное изображение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+    <script src="cache-bust.js"></script>
+    <script src="app.min.js?v=IMAGE_PATH_CORRECTED&nocache=1&t=1734567890&cache=KILLED&force=RELOAD&timestamp=20250816_0915"></script>
 </body>
 </html>
